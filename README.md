@@ -1,7 +1,7 @@
 # 1weekHeiseiOmochiGassenMochiMochi
 
-#ゲーム概要  
+# ゲーム概要  
 ・プーさんのホームランダービー
 
-#ルール
+# ルール
 ・ホームランになった本数を競う
