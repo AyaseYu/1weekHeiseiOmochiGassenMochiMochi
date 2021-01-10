@@ -5,38 +5,50 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    string[] questions = new string[] { "a", "b", "c" };
-    [SerializeField] Text questionText = default;
-    [SerializeField] Text messageText = default;
-    int currentIndex;
-    string answer;
+    [SerializeField] GameObject bat;
+    [SerializeField] GameObject ball;
+    [SerializeField] GameObject bat_display;
+
+    // 補間の強さ（0f～1f） 。0なら追従しない。1なら遅れなしに追従する。
+    [SerializeField, Range(0f, 1f)] private float followStrength;
 
     void Start()
     {
-        messageText.text = "";
-        ShowQuestion();
+
     }
 
+    bool swing_now = false;
     void Update()
     {
-        if (Input.GetKeyDown(answer))
+        //マウスにバットを追従させる
+        var targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        targetPos.z = 0f;
+        bat.transform.position = Vector3.Lerp(transform.position, targetPos, followStrength);
+
+        //バットを振る 操作：クリック
+        if (Input.GetMouseButton(0) && swing_now == false)
         {
-            messageText.text = "成功";
-            ShowQuestion();
+            swing_now = true;
         }
-        else if (Input.anyKeyDown)
+
+        //バットを振るときの動作
+        if(bat.transform.rotation.z >= -0.5f && swing_now == true)
         {
-            messageText.text = "失敗";
-            ShowQuestion();
+            Transform bat_transform = bat.transform;
+
+            bat.transform.Rotate(0, 0, 300.0f * Time.deltaTime);
+            bat_display.SetActive(false);
+            
         }
+
+        //バットを振り終わった後は元に戻す
+        if(bat.transform.rotation.z <= -0.5f)
+        {
+            bat.transform.rotation = new Quaternion(0, 0, 0,0);
+            swing_now = false;
+            bat_display.SetActive(true);
+        }
+
     }
 
-    void ShowQuestion()
-    {
-        // ランダムに問題を選択
-        currentIndex = Random.Range(0, questions.Length);
-        answer = questions[currentIndex];
-        // 問題を表示
-        questionText.text = answer;
-    }
 }
