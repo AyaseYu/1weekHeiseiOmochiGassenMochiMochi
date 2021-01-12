@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using NCMB;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,9 +15,14 @@ public class GameManager : MonoBehaviour
     // 補間の強さ（0f～1f） 。0なら追従しない。1なら遅れなしに追従する。
     [SerializeField, Range(0f, 1f)] private float followStrength;
 
+    public float time;
     void Start()
     {
+        //タイム初期値
+        time = 1.0f;
 
+        //ランキング　スコア
+        //naichilab.RankingLoader.Instance.SendScoreAndShowRanking(100);
     }
 
     void Update()
@@ -26,21 +32,27 @@ public class GameManager : MonoBehaviour
         targetPos.z = 0f;
         bat_object.transform.position = Vector3.Lerp(transform.position, targetPos, followStrength);
 
-        //バットを振る 操作：クリック
-        if (Input.GetMouseButton(0))
-        {
-            //バットを振る動作
-            bat.SetActive(false);
-            bat_display.SetActive(true);
-         
-        }
-        else
-        {
+        time += Time.deltaTime;
+
+            //バットを振る 操作：クリック
+            if (Input.GetMouseButtonDown(0) && time > 1.0f)
+            {
+                //バットを振る動作
+                bat.SetActive(false);
+                bat_display.SetActive(true);
+                time = 0.0f;
+
+             }
             
-            bat.SetActive(true);
-            bat_display.SetActive(false);
+            if(time > 0.2f)
+            {
+
+                bat.SetActive(true);
+                bat_display.SetActive(false);
+
+            }
+
          
-        }
 
     }
 
