@@ -13,13 +13,38 @@ namespace World
         [SerializeField] Text distanceText = default;
         [SerializeField] Text messageText = default;
 
+        [SerializeField] Bat bat = default;
         const int HOMERUN_DISTANCE = 120;
+        [SerializeField] GameObject[] worldObj = default;
+        [SerializeField] GameObject[] localObj = default;
 
         private void Start()
         {
             distanceText.text = "";
             messageText.text = "";
+            SetActiveWorld(false);
         }
+
+        void SetActiveWorld(bool isActive)
+        {
+            foreach (GameObject obj in worldObj)
+            {
+                obj.SetActive(isActive);
+            }
+
+            foreach (GameObject obj in localObj)
+            {
+                obj.SetActive(!isActive);
+            }
+        }
+
+
+        public void ChangeWorldCamera()
+        {
+            SetActiveWorld(true);
+            ball.Move();
+        }
+        // ボールの初期設定
 
         // 地面についたときに距離をはかるもの：BallのOnGroundに登録している
         public void CheckDistance()
@@ -45,7 +70,7 @@ namespace World
             float angle = Vector2.Angle(Vector2.up, ball.transform.position);
             Debug.Log(angle);
             // Abs:絶対値,,,単に大きさを求めるもの. |-2|も2も2となる
-            return Mathf.Abs(angle) < 62;
+            return Mathf.Abs(angle) > 62;
         }
 
     }

@@ -31,9 +31,15 @@ namespace World
         void Start()
         {
             // TODO:initAngle, initVelocityをどうやって決めるのか
-            Setup(initAngle, initVelocity);
-            StartCoroutine(BallMove());
+            // Setup(initAngle, initVelocity);
+            // StartCoroutine(BallMove());
         }
+        public void Setup(float angle, float meetDistance)
+        {
+            // meetDistance:0〜2: 30から10
+            Setup(angle, new Vector2(Mathf.Abs(30 - 10 * meetDistance), 15 - meetDistance * 5));
+        }
+
 
         void Setup(float angle, Vector2 velocity)
         {
@@ -48,6 +54,13 @@ namespace World
                 initVelocity = velocity;
             }
         }
+
+        public void Move()
+        {
+            StartCoroutine(BallMove());
+        }
+
+
 
         IEnumerator BallMove()
         {
@@ -79,7 +92,7 @@ namespace World
         void MoveVerticalOfBall(float velocityY, float initTime)
         {
             // 移動量:vt-9.8t^2/2
-            float diff = velocityY* Time.deltaTime - 9.8f * (Time.time - initTime) * Time.deltaTime / 2f;
+            float diff = velocityY* Time.deltaTime - 1.5f*9.8f * (Time.time - initTime) * Time.deltaTime / 2f;
 
             ballObj.transform.position += Vector3.up * diff;
             ballObj.transform.localScale += Vector3.one * diff;
