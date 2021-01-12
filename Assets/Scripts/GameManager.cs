@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         time = 1.0f;
 
         //ランキング　スコア
-        naichilab.RankingLoader.Instance.SendScoreAndShowRanking(100);
+        //naichilab.RankingLoader.Instance.SendScoreAndShowRanking(100);
     }
 
     void Update()
