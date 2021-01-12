@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class LocalPitcherManager : MonoBehaviour
 {
-    [SerializeField] PitcherData[] pitchersData = new PitcherData[3];
+    [SerializeField] LevelData[] levelList = default;
+    public LevelData currentPitherData;
 
     private void Start()
     {
@@ -15,19 +16,31 @@ public class LocalPitcherManager : MonoBehaviour
 
     void ShowPitcherOf(int index)
     {
-        foreach (PitcherData pitcher in pitchersData)
+        foreach (LevelData level in levelList)
         {
-            pitcher.gameObj.SetActive(false);
+            level.pitcherObj.GetComponent<LocalPitcher>().SetLevel(level);
+            level.pitcherObj.SetActive(false);
         }
 
-        pitchersData[index].gameObj.SetActive(true);
+        levelList[index].pitcherObj.SetActive(true);
+        currentPitherData = new LevelData(levelList[index]);
     }
 }
 
 
 [System.Serializable]
-public class PitcherData
+public class LevelData
 {
     public Level level;
-    public GameObject gameObj;
+    public GameObject pitcherObj;
+    public int pitchingCount;
+    public int clearScore;
+
+    public LevelData(LevelData levelData)
+    {
+        this.level = levelData.level;
+        this.pitcherObj = levelData.pitcherObj;
+        this.pitchingCount = levelData.pitchingCount;
+        this.clearScore = levelData.clearScore;
+    }
 }

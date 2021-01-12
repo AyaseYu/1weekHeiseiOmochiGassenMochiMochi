@@ -7,6 +7,7 @@ public enum Level
     Easy,
     Normal,
     Hard,
+    Debug,
 }
 
 public class GameDataManager : MonoBehaviour

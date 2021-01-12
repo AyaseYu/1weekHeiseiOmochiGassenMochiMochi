@@ -8,7 +8,6 @@ public class LocalGameManager : MonoBehaviour
     // スコアの管理
     // ゲームの流れを管理
     // CPUの設定
-
     
     void Start()
     {
@@ -18,6 +17,11 @@ public class LocalGameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void CheckPitchingCount()
+    {
+
     }
 
     // ピッチャーに球を要求する

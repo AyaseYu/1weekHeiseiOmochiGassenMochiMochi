@@ -15,7 +15,7 @@ public class Bat : MonoBehaviour
         float offsetY = GetComponent<BoxCollider2D>().offset.y;
         Debug.Log(collision.gameObject.name + ":" + collision.transform.position + "/" + gameObject.name + ":" + transform.position);
         float sideDistance = collision.transform.position.y+0.2f - (transform.position.y + offsetY); // 数値が大きいほど早い振り
-        float angle = Mathf.RoundToInt(sideDistance * 240);
+        float angle = Mathf.RoundToInt(sideDistance * 180);
         Debug.Log("バットはボールの" + angle + "で当てた");
 
         float meedDistance = Mathf.Abs(meetPoint.position.x - collision.transform.position.x);
