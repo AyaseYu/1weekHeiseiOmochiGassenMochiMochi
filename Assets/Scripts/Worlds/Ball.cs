@@ -26,17 +26,30 @@ namespace World
         [Header("デバッグ用")]
         [SerializeField] bool isRandom = default;
 
+        Vector3 ballDefaultPosition = default;
+        Vector3 ballObjDefaultPosition = default;
+        Vector3 ballObjDefaultScale = default;
 
 
-        void Start()
+        void Awake()
         {
-            // TODO:initAngle, initVelocityをどうやって決めるのか
-            // Setup(initAngle, initVelocity);
-            // StartCoroutine(BallMove());
+            ballDefaultPosition = transform.position;
+            ballObjDefaultPosition = ballObj.transform.position;
+            ballObjDefaultScale = ballObj.transform.localScale;
         }
+
+        public void ResetBallPosition()
+        {
+            ballObj.transform.localScale = ballObjDefaultScale;
+            ballObj.transform.position = ballObjDefaultPosition;
+            transform.position = ballDefaultPosition;
+
+        }
+
         public void Setup(float angle, float meetDistance)
         {
             // meetDistance:0〜2: 30から10
+            ResetBallPosition();
             Setup(angle, new Vector2(Mathf.Abs(30 - 10 * meetDistance), 15 - meetDistance * 5));
         }
 
@@ -76,7 +89,7 @@ namespace World
                 MoveHorizontalOfBall(initVelocity.x, direction);
                 MoveVerticalOfBall(initVelocity.y, initTime);
             }
-
+            Debug.Log("aaa");
             // 地面についたら外部関数を実行:計測判定
             OnGround.Invoke();
         }

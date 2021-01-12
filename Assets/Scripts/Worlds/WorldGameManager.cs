@@ -20,8 +20,6 @@ namespace World
 
         private void Start()
         {
-            distanceText.text = "";
-            messageText.text = "";
             SetActiveWorld(false);
         }
 
@@ -36,6 +34,8 @@ namespace World
             {
                 obj.SetActive(!isActive);
             }
+            distanceText.text = "";
+            messageText.text = "";
         }
 
 
@@ -49,18 +49,25 @@ namespace World
         // 地面についたときに距離をはかるもの：BallのOnGroundに登録している
         public void CheckDistance()
         {
+            StartCoroutine(CheckResult());
+        }
+
+        IEnumerator CheckResult()
+        {
             float distance = Vector2.Distance(homeBaseTransform.position, ball.transform.position);
             distanceText.text = string.Format("{0:F0}m", distance);
 
             if (BallIsFoul())
             {
                 messageText.text = "ファール！";
-                return;
             }
-            if (distance > HOMERUN_DISTANCE)
+            else if (distance > HOMERUN_DISTANCE)
             {
                 messageText.text = "ホームラン！";
             }
+            yield return new WaitForSeconds(1f);
+            ball.ResetBallPosition();
+            SetActiveWorld(false);
         }
 
         // 地面についたときに距離をはかるもの：BallのOnGroundに登録している
