@@ -400,7 +400,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 106676092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.59, y: -2.88, z: 0}
+  m_LocalPosition: {x: 0, y: -2.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1065076869}
@@ -422,6 +422,11 @@ MonoBehaviour:
   bat: {fileID: 1065076868}
   ball: {fileID: 1155781691}
   followStrength: 0.869
+  bounds:
+    xMin: -10
+    xMax: 0
+    yMin: -5
+    yMax: -2.88
   time: 0
 --- !u!1001 &130384919
 PrefabInstance:
