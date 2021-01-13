@@ -47,8 +47,7 @@ public class BallBreaking : MonoBehaviour
     public void Shot()
     {
         int r = Random.Range(0, ballList.Count);
-        // Shot(ballList[r]);
-        Shot(3);
+        Shot(ballList[r]);
     }
     void Shot(int breakingflag)
     {

@@ -66,7 +66,6 @@ public class CommonGameManager : MonoBehaviour
     public void OnCatcherForBall()
     {
         Debug.Log("OnCatcherForBall");
-        Debug.Break();
         ballCount--;
         mainUI.SetBallCount(ballCount);
 
