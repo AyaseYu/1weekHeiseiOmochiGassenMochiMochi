@@ -89,7 +89,6 @@ namespace World
                 MoveHorizontalOfBall(initVelocity.x, direction);
                 MoveVerticalOfBall(initVelocity.y, initTime);
             }
-            Debug.Log("aaa");
             // 地面についたら外部関数を実行:計測判定
             OnGround.Invoke();
         }
