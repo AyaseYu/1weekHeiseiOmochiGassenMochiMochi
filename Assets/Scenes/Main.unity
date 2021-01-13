@@ -1868,7 +1868,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1065076868}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -2341,7 +2341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breakingflag: 2
-  sr: {fileID: 0}
+  sr: {fileID: 1155781692}
 --- !u!1 &1182715437
 GameObject:
   m_ObjectHideFlags: 0
@@ -3794,6 +3794,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552234425241173691, guid: a717c94b530e04485ac6f230919c44eb,
+        type: 3}
+      propertyPath: level
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a717c94b530e04485ac6f230919c44eb, type: 3}
