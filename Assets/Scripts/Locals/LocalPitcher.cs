@@ -11,6 +11,9 @@ public class LocalPitcher : MonoBehaviour
     Vector3 ballDefaultPosition = default;
     Vector3 ballDefaultScale = default;
 
+    public UnityAction OnCatcherForBall = default;
+
+
     LevelData levelData;
 
     private void Awake()
@@ -48,7 +51,6 @@ public class LocalPitcher : MonoBehaviour
     {
         ResetBallPosition();
         animator.Play("PitcherAnimation");
-//        levelData.pitchingCount--;
     }
 
     void ShowShadow()
@@ -69,14 +71,7 @@ public class LocalPitcher : MonoBehaviour
         {
             animator.Play("PitcherIdleAnimation");
             yield return new WaitForSeconds(0.5f);
-            if (levelData.pitchingCount <= 0)
-            {
-                // 結果
-            }
-            else
-            {
-                Pitch();
-            }
+            OnCatcherForBall.Invoke();
         }
     }
 
@@ -89,6 +84,5 @@ public class LocalPitcher : MonoBehaviour
     private void OnEnable()
     {
         StopAllCoroutines();
-        StartGame();
     }
 }

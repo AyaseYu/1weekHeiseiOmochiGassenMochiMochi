@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 // namespaceで囲むとフォルダわけを行うことができる。このクラスを使いたい場合は using World;を上につけるといい。
 namespace World
@@ -14,34 +15,25 @@ namespace World
         [SerializeField] Text messageText = default;
 
         [SerializeField] Bat bat = default;
-        const int HOMERUN_DISTANCE = 120;
+        const int HOMERUN_DISTANCE = 20;
         [SerializeField] GameObject[] worldObj = default;
-        [SerializeField] GameObject[] localObj = default;
+        public UnityAction<bool> OnGroundOfBall = default;
 
-        private void Start()
-        {
-            SetActiveWorld(false);
-        }
 
-        void SetActiveWorld(bool isActive)
+        public void SetActiveObj(bool isActive)
         {
             foreach (GameObject obj in worldObj)
             {
                 obj.SetActive(isActive);
-            }
-
-            foreach (GameObject obj in localObj)
-            {
-                obj.SetActive(!isActive);
             }
             distanceText.text = "";
             messageText.text = "";
         }
 
 
-        public void ChangeWorldCamera()
+        public void Begin()
         {
-            SetActiveWorld(true);
+            SetActiveObj(true);
             ball.Move();
         }
         // ボールの初期設定
@@ -54,20 +46,22 @@ namespace World
 
         IEnumerator CheckResult()
         {
+            bool isHomerun = false;
+
             float distance = Vector2.Distance(homeBaseTransform.position, ball.transform.position);
             distanceText.text = string.Format("{0:F0}m", distance);
-
             if (BallIsFoul())
             {
                 messageText.text = "ファール！";
             }
             else if (distance > HOMERUN_DISTANCE)
             {
+                isHomerun = true;
                 messageText.text = "ホームラン！";
             }
             yield return new WaitForSeconds(1f);
             ball.ResetBallPosition();
-            SetActiveWorld(false);
+            OnGroundOfBall.Invoke(isHomerun);
         }
 
         // 地面についたときに距離をはかるもの：BallのOnGroundに登録している
