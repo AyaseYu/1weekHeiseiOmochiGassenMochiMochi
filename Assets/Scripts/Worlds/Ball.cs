@@ -26,14 +26,33 @@ namespace World
         [Header("デバッグ用")]
         [SerializeField] bool isRandom = default;
 
+        Vector3 ballDefaultPosition = default;
+        Vector3 ballObjDefaultPosition = default;
+        Vector3 ballObjDefaultScale = default;
 
 
-        void Start()
+        void Awake()
         {
-            // TODO:initAngle, initVelocityをどうやって決めるのか
-            Setup(initAngle, initVelocity);
-            StartCoroutine(BallMove());
+            ballDefaultPosition = transform.position;
+            ballObjDefaultPosition = ballObj.transform.position;
+            ballObjDefaultScale = ballObj.transform.localScale;
         }
+
+        public void ResetBallPosition()
+        {
+            ballObj.transform.localScale = ballObjDefaultScale;
+            ballObj.transform.position = ballObjDefaultPosition;
+            transform.position = ballDefaultPosition;
+
+        }
+
+        public void Setup(float angle, float meetDistance)
+        {
+            // meetDistance:0〜2: 30から10
+            ResetBallPosition();
+            Setup(angle, new Vector2(Mathf.Abs(30 - 10 * meetDistance), 15 - meetDistance * 5));
+        }
+
 
         void Setup(float angle, Vector2 velocity)
         {
@@ -49,6 +68,13 @@ namespace World
             }
         }
 
+        public void Move()
+        {
+            StartCoroutine(BallMove());
+        }
+
+
+
         IEnumerator BallMove()
         {
             // 移動開始時間
@@ -63,7 +89,7 @@ namespace World
                 MoveHorizontalOfBall(initVelocity.x, direction);
                 MoveVerticalOfBall(initVelocity.y, initTime);
             }
-
+            Debug.Log("aaa");
             // 地面についたら外部関数を実行:計測判定
             OnGround.Invoke();
         }
@@ -79,7 +105,7 @@ namespace World
         void MoveVerticalOfBall(float velocityY, float initTime)
         {
             // 移動量:vt-9.8t^2/2
-            float diff = velocityY* Time.deltaTime - 9.8f * (Time.time - initTime) * Time.deltaTime / 2f;
+            float diff = velocityY* Time.deltaTime - 1.5f*9.8f * (Time.time - initTime) * Time.deltaTime / 2f;
 
             ballObj.transform.position += Vector3.up * diff;
             ballObj.transform.localScale += Vector3.one * diff;
