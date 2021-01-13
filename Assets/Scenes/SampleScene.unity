@@ -776,6 +776,11 @@ MonoBehaviour:
   ball: {fileID: 1995658694}
   bat_display_transparent: {fileID: 1494336807}
   bat_display: {fileID: 615850234}
+  bounds:
+    xMin: -1
+    xMax: 4
+    yMin: -3
+    yMax: 0
   followStrength: 0.869
   time: 0
 --- !u!4 &920306675
