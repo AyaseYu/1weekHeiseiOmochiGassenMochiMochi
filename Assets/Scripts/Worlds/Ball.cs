@@ -50,7 +50,7 @@ namespace World
         {
             // meetDistance:0〜2: 30から10
             ResetBallPosition();
-            Setup(angle, new Vector2(Mathf.Abs(30 - 10 * meetDistance), 15 - meetDistance * 5));
+            Setup(angle, new Vector2(Mathf.Abs(20 - 10 * meetDistance), 13 - meetDistance * 5));
         }
 
 
