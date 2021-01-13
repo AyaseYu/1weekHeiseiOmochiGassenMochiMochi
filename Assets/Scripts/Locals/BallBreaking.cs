@@ -31,9 +31,9 @@ public class BallBreaking : MonoBehaviour
                 break;
             case Level.Hard:
                 ballList.Add(0);
-                ballList.Add(1);
-                ballList.Add(2);
-                ballList.Add(3);
+                // ballList.Add(1);
+                // ballList.Add(2);
+                //ballList.Add(3);
                 break;
             case Level.Debug:
                 ballList.Add(0);
@@ -85,7 +85,7 @@ public class BallBreaking : MonoBehaviour
 
             case 3:
                 //消える
-                sequence.Append(sr.DOFade(0, 1));
+                // sequence.Append(sr.DOFade(0, 3.5f));
                 sequence.Join(this.transform.DOMove(new Vector3(0f, -8f, 0.3f), 1.5f).SetEase(Ease.InExpo));
                 break;
         }
