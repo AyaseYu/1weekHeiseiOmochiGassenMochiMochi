@@ -11,6 +11,11 @@ public class LocalGameManager : MonoBehaviour
     [SerializeField] GameObject[] localObj = default;
     [SerializeField] LocalPitcherManager localPitcherManager = default;
 
+    public void Init()
+    {
+        localPitcherManager.Init();
+    }
+
     public void SetActiveObj(bool isActive)
     {
         foreach (GameObject obj in localObj)

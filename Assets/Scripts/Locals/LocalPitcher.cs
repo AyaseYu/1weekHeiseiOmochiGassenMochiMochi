@@ -15,12 +15,15 @@ public class LocalPitcher : MonoBehaviour
 
 
     LevelData levelData;
+    BallBreaking ballBreaking;
 
-    private void Awake()
+    public void Init()
     {
         animator = GetComponent<Animator>();
         ballDefaultPosition = ball.position;
         ballDefaultScale = ball.localScale;
+        ballBreaking = ball.GetComponent<BallBreaking>();
+        ballBreaking.Init(levelData.level);
     }
 
     public void SetLevel(LevelData levelData)
@@ -36,16 +39,18 @@ public class LocalPitcher : MonoBehaviour
 
     public void Throw()
     {
-        Debug.Log("Throw");
         ball.gameObject.SetActive(true);
         StartCoroutine(MoveBall());
+        ballBreaking.Shot();
         Invoke("ShowShadow", 0.1f);
     }
     void ResetBallPosition()
     {
+        ballBreaking.ResetDoTween();
         ball.position = ballDefaultPosition;
         ball.localScale = ballDefaultScale;
         ball.gameObject.SetActive(false);
+
     }
     public void Pitch()
     {
@@ -61,7 +66,7 @@ public class LocalPitcher : MonoBehaviour
 
     IEnumerator MoveBall()
     {
-        while (ball.position.y > -20f && gameObject.activeSelf)
+        while (ball.position.y > -10f && gameObject.activeSelf)
         {
             yield return null;
             ball.position -= Vector3.up * Time.deltaTime * speed;
@@ -75,11 +80,13 @@ public class LocalPitcher : MonoBehaviour
         }
     }
 
+    /* こいつがまずい
     private void OnDisable()
     {
         ResetBallPosition();
         StopAllCoroutines();
     }
+    */
 
     private void OnEnable()
     {
