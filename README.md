@@ -1,4 +1,4 @@
-# 1weekHeiseiOmochiGassenMochiMochi
+# 平成おもち合戦もちもち ホームラン競争だよ!
 
 # ゲーム概要  
 ・プーさんのホームランダービー
