@@ -38,7 +38,6 @@ public class MainUI : MonoBehaviour
 
     void SetNorma(int norma)
     {
-        Debug.Log(norma);
         this.norma.text = string.Format("ノルマ:{0}本", norma);
     }
 

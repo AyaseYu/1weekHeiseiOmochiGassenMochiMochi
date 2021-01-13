@@ -30,15 +30,23 @@ public class CommonGameManager : MonoBehaviour
     private void Start()
     {
         homerunCount = 0;
+        localGameManager.Init();
+        localGameManager.GetCurrentPitcher().OnCatcherForBall = OnCatcherForBall;
         ballCount = localGameManager.GetCurrentLevelData().pitchingCount;
         worldGameManager.OnGroundOfBall = OnGroundOfBall;
-        localGameManager.GetCurrentPitcher().OnCatcherForBall = OnCatcherForBall;
+
         currentViewMode = ViewMode.Local;
         ShowLocal(IsLocalView);// 初めはローカルを表示
-        localGameManager.Begin();
         mainUI.SetLevel(localGameManager.GetCurrentLevelData());
         mainUI.SetHomerunCount(homerunCount);
         mainUI.HideResult();
+        Invoke("Begin", 0.5f);
+    }
+
+    void Begin()
+    {
+        localGameManager.Begin();
+
     }
 
     // 切り替えを行う
@@ -57,6 +65,8 @@ public class CommonGameManager : MonoBehaviour
 
     public void OnCatcherForBall()
     {
+        Debug.Log("OnCatcherForBall");
+        Debug.Break();
         ballCount--;
         mainUI.SetBallCount(ballCount);
 

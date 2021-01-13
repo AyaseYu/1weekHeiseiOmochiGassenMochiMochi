@@ -7,11 +7,10 @@ public class LocalPitcherManager : MonoBehaviour
     [SerializeField] LevelData[] levelList = default;
     public LevelData currentPitherData;
 
-    private void Start()
+    public void Init()
     {
 
         int level = (int)GameDataManager.instance.level;
-        Debug.Log(level);
         ShowPitcherOf(level);
     }
 
@@ -22,8 +21,8 @@ public class LocalPitcherManager : MonoBehaviour
             level.pitcherObj.GetComponent<LocalPitcher>().SetLevel(level);
             level.pitcherObj.SetActive(false);
         }
-
         levelList[index].pitcherObj.SetActive(true);
+        levelList[index].pitcherObj.GetComponent<LocalPitcher>().Init();
         currentPitherData = new LevelData(levelList[index]);
     }
 }
