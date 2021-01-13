@@ -8,16 +8,28 @@ public class LocalGameManager : MonoBehaviour
     // スコアの管理
     // ゲームの流れを管理
     // CPUの設定
-    
-    void Start()
+    [SerializeField] GameObject[] localObj = default;
+    [SerializeField] LocalPitcherManager localPitcherManager = default;
+
+    public void SetActiveObj(bool isActive)
     {
-        
+        foreach (GameObject obj in localObj)
+        {
+            obj.SetActive(isActive);
+        }
     }
 
-    void Update()
+    // 打たれるまで実行する
+    public void PlayAction()
     {
-        
+        RequestPitch();
     }
+
+    public void Begin()
+    {
+        RequestPitch();
+    }
+
 
     void CheckPitchingCount()
     {
@@ -27,7 +39,17 @@ public class LocalGameManager : MonoBehaviour
     // ピッチャーに球を要求する
     void RequestPitch()
     {
+        localPitcherManager.currentPitherData.pitcherObj.GetComponent<LocalPitcher>().Pitch();
+    }
 
+    public LocalPitcher GetCurrentPitcher()
+    {
+        return localPitcherManager.currentPitherData.pitcherObj.GetComponent<LocalPitcher>();
+    }
+
+    public LevelData GetCurrentLevelData()
+    {
+        return localPitcherManager.currentPitherData;
     }
 
 }

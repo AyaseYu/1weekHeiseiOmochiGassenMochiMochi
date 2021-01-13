@@ -9,6 +9,7 @@ public class LocalPitcherManager : MonoBehaviour
 
     private void Start()
     {
+
         int level = (int)GameDataManager.instance.level;
         Debug.Log(level);
         ShowPitcherOf(level);
