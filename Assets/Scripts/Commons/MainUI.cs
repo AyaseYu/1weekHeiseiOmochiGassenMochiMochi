@@ -19,10 +19,14 @@ public class MainUI : MonoBehaviour
         SetBallCount(levelData.pitchingCount);
         SetHomerunCount(0);
         SetNorma(levelData.clearScore);
-        if (levelData.level == Level.Hard || levelData.level == Level.Debug)
-        {
-            rankingButton.gameObject.SetActive(false);
-        }
+        bool isHardMode = levelData.level == Level.Hard || levelData.level == Level.Debug;
+        SetHardMode(isHardMode);
+    }
+
+    void SetHardMode(bool isHardMode)
+    {
+        ballCount.gameObject.SetActive(!isHardMode);
+        rankingButton.gameObject.SetActive(isHardMode);
     }
 
 

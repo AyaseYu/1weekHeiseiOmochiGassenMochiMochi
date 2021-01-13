@@ -11,6 +11,7 @@ public class CommonGameManager : MonoBehaviour
     [SerializeField] GameResult gameResult = default;
     [SerializeField] MainUI mainUI = default;
 
+    Level level;
     int ballCount;
     int homerunCount;
 
@@ -34,7 +35,7 @@ public class CommonGameManager : MonoBehaviour
         localGameManager.GetCurrentPitcher().OnCatcherForBall = OnCatcherForBall;
         ballCount = localGameManager.GetCurrentLevelData().pitchingCount;
         worldGameManager.OnGroundOfBall = OnGroundOfBall;
-
+        level = localGameManager.GetCurrentLevelData().level;
         currentViewMode = ViewMode.Local;
         ShowLocal(IsLocalView);// 初めはローカルを表示
         mainUI.SetLevel(localGameManager.GetCurrentLevelData());
@@ -65,12 +66,11 @@ public class CommonGameManager : MonoBehaviour
 
     public void OnCatcherForBall()
     {
-        Debug.Log("OnCatcherForBall");
         ballCount--;
         mainUI.SetBallCount(ballCount);
-
         mainUI.SetBallCount(ballCount);
-        if (IsEnd())
+
+        if (IsEnd() || level == Level.Hard)
         {
             ShowResult();
             return;
@@ -79,6 +79,11 @@ public class CommonGameManager : MonoBehaviour
     }
     void OnGroundOfBall(bool isHomerun)
     {
+        if (level == Level.Hard && !isHomerun)
+        {
+            ShowResult();
+            return;
+        }
         ballCount--;
         if (isHomerun)
         {
