@@ -10,12 +10,14 @@ public class LocalPitcher : MonoBehaviour
     Animator animator;
     Vector3 ballDefaultPosition = default;
     Vector3 ballDefaultScale = default;
+    
 
     public UnityAction OnCatcherForBall = default;
 
 
     LevelData levelData;
     BallBreaking ballBreaking;
+    GameObject shadow;
 
     public void Init()
     {
@@ -23,6 +25,7 @@ public class LocalPitcher : MonoBehaviour
         ballDefaultPosition = ball.position;
         ballDefaultScale = ball.localScale;
         ballBreaking = ball.GetComponent<BallBreaking>();
+        shadow = ball.transform.GetChild(0).gameObject;
         ballBreaking.Init(levelData.level);
     }
 
@@ -31,25 +34,28 @@ public class LocalPitcher : MonoBehaviour
         this.levelData = new LevelData(levelData);
     }
 
+    /*
     void StartGame()
     {
         ball.gameObject.SetActive(false);
         Pitch();
-    }
+    }*/
 
     public void Throw()
     {
         ball.gameObject.SetActive(true);
         StartCoroutine(MoveBall());
         ballBreaking.Shot();
-        Invoke("ShowShadow", 0.1f);
     }
     void ResetBallPosition()
     {
         ballBreaking.ResetDoTween();
         ball.position = ballDefaultPosition;
         ball.localScale = ballDefaultScale;
+        ball.GetComponent<SpriteRenderer>().color = Color.white;
+        shadow.GetComponent<SpriteRenderer>().color = Color.black;
         ball.gameObject.SetActive(false);
+        shadow.SetActive(false);
 
     }
     public void Pitch()
@@ -58,17 +64,16 @@ public class LocalPitcher : MonoBehaviour
         animator.Play("PitcherAnimation");
     }
 
-    void ShowShadow()
-    {
-        ball.GetChild(0).gameObject.SetActive(true);
-    }
-
 
     IEnumerator MoveBall()
     {
         while (ball.position.y > -10f && gameObject.activeSelf)
         {
             yield return null;
+            if (ball.position.y < 5f && shadow.activeSelf == false)
+            {
+                shadow.SetActive(true);
+            }
             ball.position -= Vector3.up * Time.deltaTime * speed;
             ball.localScale += Vector3.one * Time.deltaTime * speed * 0.1f;
         }

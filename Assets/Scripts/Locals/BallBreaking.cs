@@ -9,6 +9,7 @@ public class BallBreaking : MonoBehaviour
     public int breakingflag;
     private object rectTransform;
     public SpriteRenderer sr;
+    public SpriteRenderer shadow;
     Sequence sequence;
 
     List<int> ballList = new List<int>();
@@ -26,14 +27,16 @@ public class BallBreaking : MonoBehaviour
                 break;
             case Level.Normal:
                 ballList.Add(0);
-                ballList.Add(1);
-                ballList.Add(2);
-                break;
-            case Level.Hard:
-                ballList.Add(0);
                 // ballList.Add(1);
                 // ballList.Add(2);
-                //ballList.Add(3);
+                // ballList.Add(3);
+                // ballList.Add(4);
+                break;
+            case Level.Hard:
+                // ballList.Add(0);
+                // ballList.Add(1);
+                // ballList.Add(2);
+                ballList.Add(3);
                 break;
             case Level.Debug:
                 ballList.Add(0);
@@ -51,7 +54,7 @@ public class BallBreaking : MonoBehaviour
     }
     void Shot(int breakingflag)
     {
-        
+        float x = Random.Range(-2.0f, 2.0f);
         sequence = DOTween.Sequence();
 
 
@@ -62,12 +65,12 @@ public class BallBreaking : MonoBehaviour
             case 1:
 
                 //徐々に早くなる
-                sequence.Append(this.transform.DOMove(new Vector3(0f, -8f, 0), 1f).SetEase(Ease.InExpo));
+                sequence.Append(this.transform.DOMove(new Vector3(x, -9f, 0), 1f).SetEase(Ease.InExpo));
                 break;
 
             case 2:
                 //横
-                sequence.Append(this.transform.DOMove(new Vector3(this.transform.position.x, this.transform.position.y - 4, 0), 0.5f).SetEase(Ease.Linear));
+                sequence.Append(this.transform.DOMove(new Vector3(this.transform.position.x + x, this.transform.position.y - 4, 0), 0.5f).SetEase(Ease.Linear));
                 for (int i = 4; i < 25; i++)
                 {
                     if (i % 2 == 0)
@@ -85,9 +88,30 @@ public class BallBreaking : MonoBehaviour
 
             case 3:
                 //消える
-                // sequence.Append(sr.DOFade(0, 3.5f));
-                sequence.Join(this.transform.DOMove(new Vector3(0f, -8f, 0.3f), 1.5f).SetEase(Ease.InExpo));
+                sequence.Append(sr.DOFade(0, 0.4f));
+                sequence.Join(shadow.DOFade(0, 0.4f));
+                sequence.Join(this.transform.DOMove(new Vector3(x, -9f, 0.3f), 1.5f).SetEase(Ease.Linear));
                 break;
+            case 4:
+                //横
+                sequence.Append(this.transform.DOMove(new Vector3(this.transform.position.x+ x, this.transform.position.y - 4, 0), 0.5f).SetEase(Ease.Linear));
+                for (int i = 4; i < 25; i++)
+                {
+                    if (i % 2 == 0)
+                    {
+                        sequence.Append(this.transform.DOMove(new Vector3(this.transform.position.x + 2, this.transform.position.y - i, 0), 0.1f).SetEase(Ease.Linear));
+                        sequence.Append(this.transform.DOMove(new Vector3(this.transform.position.x, this.transform.position.y - i+1, 0), 0.2f).SetEase(Ease.Linear));
+                    }
+                    else
+                    {
+                        sequence.Append(this.transform.DOMove(new Vector3(this.transform.position.x - 2, this.transform.position.y - i, 0), 0.1f).SetEase(Ease.Linear));
+                        sequence.Append(this.transform.DOMove(new Vector3(this.transform.position.x, this.transform.position.y - i-1, 0), 0.2f).SetEase(Ease.Linear));
+                    }
+
+                }
+
+                break;
+
         }
         sequence.Play();
     }
