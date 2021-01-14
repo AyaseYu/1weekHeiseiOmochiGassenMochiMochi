@@ -836,7 +836,7 @@ MonoBehaviour:
   - level: 1
     pitcherObj: {fileID: 1794394427}
     pitchingCount: 20
-    clearScore: 10
+    clearScore: 8
   - level: 2
     pitcherObj: {fileID: 1085789549}
     pitchingCount: 50
@@ -4530,7 +4530,7 @@ PrefabInstance:
     - target: {fileID: 7552234425241173691, guid: a717c94b530e04485ac6f230919c44eb,
         type: 3}
       propertyPath: level
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a717c94b530e04485ac6f230919c44eb, type: 3}

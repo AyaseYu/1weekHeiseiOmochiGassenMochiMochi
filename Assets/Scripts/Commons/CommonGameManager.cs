@@ -14,6 +14,8 @@ public class CommonGameManager : MonoBehaviour
     Level level;
     int ballCount;
     int homerunCount;
+    int missingCount = 0;
+
 
     enum ViewMode
     {
@@ -47,7 +49,14 @@ public class CommonGameManager : MonoBehaviour
     void Begin()
     {
         localGameManager.Begin();
+    }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            OnRetry();
+        }
     }
 
     // 切り替えを行う
@@ -66,11 +75,12 @@ public class CommonGameManager : MonoBehaviour
 
     public void OnCatcherForBall()
     {
+        missingCount++;
         ballCount--;
         mainUI.SetBallCount(ballCount);
         mainUI.SetBallCount(ballCount);
 
-        if (IsEnd() || level == Level.Hard)
+        if (IsEnd() || level == Level.Hard && missingCount >= 3)
         {
             ShowResult();
             return;
@@ -80,6 +90,11 @@ public class CommonGameManager : MonoBehaviour
     void OnGroundOfBall(bool isHomerun)
     {
         if (level == Level.Hard && !isHomerun)
+        {
+            missingCount++;
+        }
+
+        if (missingCount >= 3)
         {
             ShowResult();
             return;

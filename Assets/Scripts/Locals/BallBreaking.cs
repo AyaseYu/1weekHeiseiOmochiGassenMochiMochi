@@ -24,9 +24,13 @@ public class BallBreaking : MonoBehaviour
         {
             case Level.Easy:
                 ballList.Add(0);
+                ballList.Add(0);
+                ballList.Add(0);
+                ballList.Add(3);
                 break;
             case Level.Normal:
                 ballList.Add(0);
+//                ballList.Add(0);
                 ballList.Add(1);
                 ballList.Add(2);
                 ballList.Add(3);
@@ -64,7 +68,7 @@ public class BallBreaking : MonoBehaviour
             case 1:
 
                 //徐々に早くなる
-                sequence.Append(this.transform.DOMove(new Vector3(x, -9f, 0), 1f).SetEase(Ease.InExpo));
+                sequence.Append(this.transform.DOMove(new Vector3(x, 3f, 0), 0.7f).SetEase(Ease.InExpo));
                 break;
 
             case 2:
