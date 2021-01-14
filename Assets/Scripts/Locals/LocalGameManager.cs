@@ -27,19 +27,14 @@ public class LocalGameManager : MonoBehaviour
     // 打たれるまで実行する
     public void PlayAction()
     {
-        RequestPitch();
+        Invoke(nameof(RequestPitch), 0.5f);
     }
 
     public void Begin()
     {
-        RequestPitch();
+        Invoke(nameof(RequestPitch), 0.5f);
     }
 
-
-    void CheckPitchingCount()
-    {
-
-    }
 
     // ピッチャーに球を要求する
     void RequestPitch()
