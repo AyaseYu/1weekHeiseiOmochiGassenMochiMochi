@@ -11,22 +11,27 @@ public class MainUI : MonoBehaviour
 
     [SerializeField] GameObject resultPanel = default;
     [SerializeField] Text resultText = default;
-    [SerializeField] GameObject rankingButton = default;
 
 
     public void SetLevel(LevelData levelData)
     {
-        SetBallCount(levelData.pitchingCount);
         SetHomerunCount(0);
-        SetNorma(levelData.clearScore);
-        bool isHardMode = levelData.level == Level.Hard || levelData.level == Level.Debug;
-        SetHardMode(isHardMode);
+        if (levelData.level == Level.Hard)
+        {
+            SetMissCount(0);
+            this.norma.text = string.Format("---");
+        }
+        else
+        {
+            SetBallCount(levelData.pitchingCount);
+            SetNorma(levelData.clearScore);
+        }
     }
 
-    void SetHardMode(bool isHardMode)
+
+    public void SetMissCount(int miss)
     {
-        ballCount.gameObject.SetActive(!isHardMode);
-        rankingButton.gameObject.SetActive(isHardMode);
+        this.ballCount.text = string.Format("ミス:{0}回", miss);
     }
 
 

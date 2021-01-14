@@ -34,12 +34,14 @@ public class BallBreaking : MonoBehaviour
                 ballList.Add(1);
                 ballList.Add(2);
                 ballList.Add(3);
+                ballList.Add(4);
                 break;
             case Level.Hard:
                 ballList.Add(0);
                 ballList.Add(1);
                 ballList.Add(2);
                 ballList.Add(3);
+                ballList.Add(4);
                 break;
             case Level.Debug:
                 ballList.Add(0);
@@ -66,7 +68,6 @@ public class BallBreaking : MonoBehaviour
             case 0:
                 break;
             case 1:
-
                 //徐々に早くなる
                 sequence.Append(this.transform.DOMove(new Vector3(x, 3f, 0), 0.7f).SetEase(Ease.InExpo));
                 break;
@@ -96,6 +97,11 @@ public class BallBreaking : MonoBehaviour
                 sequence.Join(this.transform.DOMove(new Vector3(x, -9f, 0.3f), 1.5f).SetEase(Ease.Linear));
                 break;
             case 4:
+                //徐々に早くなる
+                sequence.Append(this.transform.DOMove(new Vector3(x, -9f, 0), 1f).SetEase(Ease.InExpo));
+                break;
+
+            case 5:
                 //横
                 sequence.Append(this.transform.DOMove(new Vector3(this.transform.position.x+ x, this.transform.position.y - 4, 0), 0.5f).SetEase(Ease.Linear));
                 for (int i = 4; i < 25; i++)
