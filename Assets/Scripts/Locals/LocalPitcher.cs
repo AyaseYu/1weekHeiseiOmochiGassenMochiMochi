@@ -18,7 +18,7 @@ public class LocalPitcher : MonoBehaviour
     LevelData levelData;
     BallBreaking ballBreaking;
     GameObject shadow;
-
+    float addSpeed = 1;
     public void Init()
     {
         animator = GetComponent<Animator>();
@@ -27,7 +27,12 @@ public class LocalPitcher : MonoBehaviour
         ballBreaking = ball.GetComponent<BallBreaking>();
         shadow = ball.transform.GetChild(0).gameObject;
         ballBreaking.Init(levelData.level);
+        if (levelData.level == Level.Hard)
+        {
+            addSpeed = 1.5f;
+        }
     }
+
 
     public void SetLevel(LevelData levelData)
     {
@@ -74,24 +79,17 @@ public class LocalPitcher : MonoBehaviour
             {
                 shadow.SetActive(true);
             }
-            ball.position -= Vector3.up * Time.deltaTime * speed;
-            ball.localScale += Vector3.one * Time.deltaTime * speed * 0.1f;
+            ball.position -= Vector3.up * Time.deltaTime * speed*addSpeed;
+            ball.localScale += Vector3.one * Time.deltaTime * speed * 0.1f * addSpeed;
         }
         if (gameObject.activeSelf)
         {
             animator.Play("PitcherIdleAnimation");
+            ResetBallPosition();
             yield return new WaitForSeconds(0.5f);
             OnCatcherForBall.Invoke();
         }
     }
-
-    /* こいつがまずい
-    private void OnDisable()
-    {
-        ResetBallPosition();
-        StopAllCoroutines();
-    }
-    */
 
     private void OnEnable()
     {

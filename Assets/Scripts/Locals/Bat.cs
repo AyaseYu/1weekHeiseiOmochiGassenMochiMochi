@@ -63,6 +63,7 @@ public class Bat : MonoBehaviour
 
     void ChangeWorld()
     {
+        localBall.gameObject.SetActive(false);
         AudioSource.PlayClipAtPoint(sound1, Camera.main.transform.position, 1.0f);
         OnCollision.Invoke();
     }
