@@ -26,23 +26,40 @@ public class SoundManager : MonoBehaviour
 
     public enum BGM
     {
+        MainHard,
         Title,
         Main,
-        Result,
+        StageSelect,
     }
     public enum SE
     {
         Hit,
+        Button,
+        Clear,
+        GameOver,
     }
 
     public void PlayBGM(BGM bgmType)
     {
         int index = (int)bgmType;
-        bgm.PlayOneShot(bgmClips[index]);
+        bgm.clip = bgmClips[index];
+        if (bgmType == BGM.MainHard)
+        {
+            bgm.volume = 0.1f;
+        }
+        else
+        {
+            bgm.volume = 0.4f;
+        }
+        bgm.Play();
     }
 
     public void PlaySE(SE seType)
     {
+        if (seType == SE.Clear || seType == SE.GameOver)
+        {
+            bgm.Stop();
+        }
         int index = (int)seType;
         se.PlayOneShot(seClips[index]);
     }

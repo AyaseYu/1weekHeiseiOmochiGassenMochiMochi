@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class StageSelectManager : MonoBehaviour
 {
+    private void Start()
+    {
+        SoundManager.instance.PlayBGM(SoundManager.BGM.StageSelect);
+    }
     public void OnEasyButton()
     {
         GameDataManager.instance.SetLevel(Level.Easy);

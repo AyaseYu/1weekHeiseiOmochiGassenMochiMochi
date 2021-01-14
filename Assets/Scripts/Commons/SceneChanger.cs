@@ -8,6 +8,7 @@ public class SceneChanger : MonoBehaviour
 
     public void OnNextScene(string nextSceneName)
     {
+        SoundManager.instance.PlaySE(SoundManager.SE.Button);
         SceneManager.LoadScene(nextSceneName);
     }
 }
