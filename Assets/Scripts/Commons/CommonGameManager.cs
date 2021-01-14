@@ -8,7 +8,6 @@ public class CommonGameManager : MonoBehaviour
 {
     [SerializeField] WorldGameManager worldGameManager = default;
     [SerializeField] LocalGameManager localGameManager = default;
-    [SerializeField] GameResult gameResult = default;
     [SerializeField] MainUI mainUI = default;
 
     Level level;
@@ -75,10 +74,16 @@ public class CommonGameManager : MonoBehaviour
 
     public void OnCatcherForBall()
     {
-        missingCount++;
-        ballCount--;
-        mainUI.SetBallCount(ballCount);
-        mainUI.SetBallCount(ballCount);
+        if (level == Level.Hard)
+        {
+            missingCount++;
+            mainUI.SetMissCount(missingCount);
+        }
+        else
+        {
+            ballCount--;
+            mainUI.SetBallCount(ballCount);
+        }
 
         if (IsEnd() || level == Level.Hard && missingCount >= 3)
         {
@@ -92,6 +97,7 @@ public class CommonGameManager : MonoBehaviour
         if (level == Level.Hard && !isHomerun)
         {
             missingCount++;
+            mainUI.SetMissCount(missingCount);
         }
 
         if (missingCount >= 3)
@@ -104,7 +110,10 @@ public class CommonGameManager : MonoBehaviour
         {
             homerunCount++;
         }
-        mainUI.SetBallCount(ballCount);
+        if (level != Level.Hard)
+        {
+            mainUI.SetBallCount(ballCount);
+        }
         mainUI.SetHomerunCount(homerunCount);
         if (IsEnd())
         {
@@ -139,6 +148,12 @@ public class CommonGameManager : MonoBehaviour
     // 結果の表示を行う
     public void ShowResult()
     {
+        if (level == Level.Hard)
+        {
+            mainUI.ShowResult(homerunCount+"本");
+            naichilab.RankingLoader.Instance.SendScoreAndShowRanking(homerunCount);
+        }
+
         if (IsNormaClear())
         {
             mainUI.ShowResult("成功!");
@@ -147,11 +162,6 @@ public class CommonGameManager : MonoBehaviour
         {
             mainUI.ShowResult("失敗...");
         }
-    }
-
-    public void OnRankingButton()
-    {
-        naichilab.RankingLoader.Instance.SendScoreAndShowRanking(homerunCount);
     }
 
     public void OnTitle()
