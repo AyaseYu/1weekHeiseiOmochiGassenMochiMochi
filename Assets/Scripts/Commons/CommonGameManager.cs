@@ -31,6 +31,7 @@ public class CommonGameManager : MonoBehaviour
 
     private void Start()
     {
+        
         homerunCount = 0;
         localGameManager.Init();
         localGameManager.GetCurrentPitcher().OnCatcherForBall = OnCatcherForBall;
@@ -43,6 +44,14 @@ public class CommonGameManager : MonoBehaviour
         mainUI.SetHomerunCount(homerunCount);
         mainUI.HideResult();
         Invoke("Begin", 0.5f);
+        if (level == Level.Hard)
+        {
+            SoundManager.instance.PlayBGM(SoundManager.BGM.MainHard);
+        }
+        else
+        {
+            SoundManager.instance.PlayBGM(SoundManager.BGM.Main);
+        }
     }
 
     void Begin()
@@ -151,15 +160,17 @@ public class CommonGameManager : MonoBehaviour
         if (level == Level.Hard)
         {
             mainUI.ShowResult(homerunCount+"本");
+            SoundManager.instance.PlaySE(SoundManager.SE.GameOver);
             naichilab.RankingLoader.Instance.SendScoreAndShowRanking(homerunCount);
         }
-
-        if (IsNormaClear())
+        else if (IsNormaClear())
         {
+            SoundManager.instance.PlaySE(SoundManager.SE.Clear);
             mainUI.ShowResult("成功!");
         }
         else
         {
+            SoundManager.instance.PlaySE(SoundManager.SE.GameOver);
             mainUI.ShowResult("失敗...");
         }
     }
@@ -170,6 +181,7 @@ public class CommonGameManager : MonoBehaviour
     }
     public void OnRetry()
     {
+        SoundManager.instance.PlaySE(SoundManager.SE.Button);
         SceneManager.LoadScene("Main");
     }
 }

@@ -1260,9 +1260,15 @@ MonoBehaviour:
   bgm: {fileID: 1241297456906092265}
   se: {fileID: 1241297456906092270}
   bgmClips:
-  - {fileID: 8300000, guid: c4fd5c4b80c484eb3a31909b54142a91, type: 3}
+  - {fileID: 8300000, guid: e35130f8e9b114848b676bcc2aaf5fc4, type: 3}
+  - {fileID: 8300000, guid: d56ef601e0495466898fd147a5eca83f, type: 3}
+  - {fileID: 8300000, guid: 0715a76c276a840b791da24f48bfcd07, type: 3}
+  - {fileID: 8300000, guid: d2140034d22204637a24ce94317ea063, type: 3}
   seClips:
   - {fileID: 8300000, guid: 9fc1b046874f86140a0afe61c0cca2e7, type: 3}
+  - {fileID: 8300000, guid: df548877fe8b14b5597b1119b710e167, type: 3}
+  - {fileID: 8300000, guid: e3d51a63291524803a97ff9fd8165ec0, type: 3}
+  - {fileID: 8300000, guid: b815deae225544dcabe9079c0c2ebe15, type: 3}
   settingPanel: {fileID: 1241297455640335342}
 --- !u!82 &1241297456906092265
 AudioSource:
@@ -1274,7 +1280,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c4fd5c4b80c484eb3a31909b54142a91, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.407
   m_Pitch: 1
@@ -1372,7 +1378,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.671
   m_Pitch: 1
   Loop: 0
   Mute: 0

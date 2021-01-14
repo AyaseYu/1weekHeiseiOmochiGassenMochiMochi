@@ -26,17 +26,20 @@ public class BallBreaking : MonoBehaviour
                 ballList.Add(0);
                 ballList.Add(0);
                 ballList.Add(0);
+                ballList.Add(0);
+                ballList.Add(0);
                 ballList.Add(3);
                 break;
             case Level.Normal:
                 ballList.Add(0);
-//                ballList.Add(0);
+                ballList.Add(0);
                 ballList.Add(1);
                 ballList.Add(2);
                 ballList.Add(3);
                 ballList.Add(4);
                 break;
             case Level.Hard:
+                ballList.Add(0);
                 ballList.Add(0);
                 ballList.Add(1);
                 ballList.Add(2);
