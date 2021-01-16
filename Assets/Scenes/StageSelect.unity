@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4038359, g: 0.583813, b: 0.7075472, a: 1}
+  m_Color: {r: 0, g: 0.20533228, b: 0.4528302, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -616,7 +616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19157174, g: 0.38679248, b: 0.25888926, a: 1}
+  m_Color: {r: 0.6509434, g: 0.58282137, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -913,7 +913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4038359, g: 0.583813, b: 0.7075472, a: 1}
+  m_Color: {r: 0, g: 0.20533228, b: 0.4528302, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -992,7 +992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4038359, g: 0.583813, b: 0.7075472, a: 1}
+  m_Color: {r: 0, g: 0.20533228, b: 0.4528302, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1149,7 +1149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.745283, g: 0.5633028, b: 0.5449003, a: 1}
+  m_Color: {r: 0.6226415, g: 0.06104329, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1209,10 +1209,10 @@ RectTransform:
   m_Father: {fileID: 470440097}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 156, y: -6}
-  m_SizeDelta: {x: -56.912964, y: 4.021332}
+  m_SizeDelta: {x: 903.08704, y: 136.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &699007101
 MonoBehaviour:
@@ -1287,10 +1287,10 @@ RectTransform:
   m_Father: {fileID: 470440097}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 158, y: 42}
-  m_SizeDelta: {x: -56.912964, y: 4.021332}
+  m_SizeDelta: {x: 903.08704, y: 71.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &712506793
 MonoBehaviour:
@@ -1383,7 +1383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4038359, g: 0.583813, b: 0.7075472, a: 1}
+  m_Color: {r: 0, g: 0.20533228, b: 0.4528302, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1462,7 +1462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.28835884, g: 0.4528302, b: 0.35777858, a: 1}
+  m_Color: {r: 0.5471698, g: 0.49241826, b: 0.023228897, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1522,10 +1522,10 @@ RectTransform:
   m_Father: {fileID: 356076022}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 155, y: -31}
-  m_SizeDelta: {x: -56.91046, y: 0}
+  m_SizeDelta: {x: 903.08954, y: 100.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &874033308
 MonoBehaviour:
@@ -1984,7 +1984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.745283, g: 0.5633028, b: 0.5449003, a: 1}
+  m_Color: {r: 0.6226415, g: 0.06104329, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2063,7 +2063,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4038359, g: 0.583813, b: 0.7075472, a: 1}
+  m_Color: {r: 0, g: 0.20533228, b: 0.4528302, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2141,7 +2141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.28835884, g: 0.4528302, b: 0.35777858, a: 1}
+  m_Color: {r: 0.5471698, g: 0.49241826, b: 0.023228897, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2411,10 +2411,10 @@ RectTransform:
   m_Father: {fileID: 1081956773}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 168, y: -32}
-  m_SizeDelta: {x: -56.912964, y: 5.0463257}
+  m_SizeDelta: {x: 903.08704, y: 82.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1262856995
 MonoBehaviour:
@@ -2512,7 +2512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.26312745, g: 0.55022216, b: 0.6886792, a: 1}
+  m_Color: {r: 0.01375042, g: 0.13678959, b: 0.9716981, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2568,10 +2568,10 @@ RectTransform:
   m_Father: {fileID: 1081956773}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 169, y: 25}
-  m_SizeDelta: {x: -56.912964, y: 5.0463257}
+  m_SizeDelta: {x: 903.08704, y: 110.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1309520795
 MonoBehaviour:
@@ -2664,7 +2664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.745283, g: 0.5633028, b: 0.5449003, a: 1}
+  m_Color: {r: 0.6226415, g: 0.06104329, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2743,7 +2743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.745283, g: 0.5633028, b: 0.5449003, a: 1}
+  m_Color: {r: 0.6226415, g: 0.06104329, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2899,7 +2899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.28835884, g: 0.4528302, b: 0.35777858, a: 1}
+  m_Color: {r: 0.5471698, g: 0.49241826, b: 0.023228897, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2997,7 +2997,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uFF15\u307B\u3093\u3001\u307B\u30FC\u3080\u3089\u3093\u3092\u3046\u3066"
+  m_Text: "3\u307B\u3093\u3001\u307B\u30FC\u3080\u3089\u3093\u3092\u3046\u3066"
 --- !u!222 &1540936261
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3199,10 +3199,10 @@ RectTransform:
   m_Father: {fileID: 356076022}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -270.00003, y: -4}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 960, y: 148.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1800370160
 MonoBehaviour:
@@ -3338,7 +3338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.28835884, g: 0.4528302, b: 0.35777858, a: 1}
+  m_Color: {r: 0.5471698, g: 0.49241826, b: 0.023228897, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3417,7 +3417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.745283, g: 0.5633028, b: 0.5449003, a: 1}
+  m_Color: {r: 0.6226415, g: 0.06104329, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3578,7 +3578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7169812, g: 0.4565682, b: 0.4916593, a: 1}
+  m_Color: {r: 0.8773585, g: 0, b: 0.11785413, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3652,7 +3652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.28835884, g: 0.4528302, b: 0.35777858, a: 1}
+  m_Color: {r: 0.5471698, g: 0.49241826, b: 0.023228897, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:

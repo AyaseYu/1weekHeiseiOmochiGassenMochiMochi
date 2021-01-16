@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
@@ -9,7 +10,9 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioClip[] bgmClips = default;
     [SerializeField] AudioClip[] seClips = default;
     [SerializeField] GameObject settingPanel = default;
-
+    [SerializeField] Image speakerIcon = default;
+    [SerializeField] Sprite speakerOnIcon = default;
+    [SerializeField] Sprite speakerOffIcon = default;
     public static SoundManager instance;
     private void Awake()
     {
@@ -39,6 +42,23 @@ public class SoundManager : MonoBehaviour
         GameOver,
     }
 
+    bool isSpeakerOn = true;
+    public void OnSpeaker()
+    {
+        isSpeakerOn = !isSpeakerOn;
+        if (isSpeakerOn)
+        {
+            AudioListener.volume = 0;
+            speakerIcon.sprite = speakerOffIcon;
+        }
+        else
+        {
+            AudioListener.volume = 1;
+            speakerIcon.sprite = speakerOnIcon;
+        }
+
+    }
+
     public void PlayBGM(BGM bgmType)
     {
         int index = (int)bgmType;
@@ -51,6 +71,7 @@ public class SoundManager : MonoBehaviour
         {
             bgm.volume = 0.4f;
         }
+
         bgm.Play();
     }
 

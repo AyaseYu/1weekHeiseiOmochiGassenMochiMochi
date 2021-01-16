@@ -9,7 +9,7 @@ public class CommonGameManager : MonoBehaviour
     [SerializeField] WorldGameManager worldGameManager = default;
     [SerializeField] LocalGameManager localGameManager = default;
     [SerializeField] MainUI mainUI = default;
-
+    [SerializeField] GameObject messageText = default;
     Level level;
     int ballCount;
     int homerunCount;
@@ -31,7 +31,6 @@ public class CommonGameManager : MonoBehaviour
 
     private void Start()
     {
-        
         homerunCount = 0;
         localGameManager.Init();
         localGameManager.GetCurrentPitcher().OnCatcherForBall = OnCatcherForBall;
@@ -59,13 +58,6 @@ public class CommonGameManager : MonoBehaviour
         localGameManager.Begin();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            OnRetry();
-        }
-    }
 
     // 切り替えを行う
     public void ShowLocal(bool isActive)
@@ -83,6 +75,7 @@ public class CommonGameManager : MonoBehaviour
 
     public void OnCatcherForBall()
     {
+        messageText.gameObject.SetActive(true);
         if (level == Level.Hard)
         {
             missingCount++;
