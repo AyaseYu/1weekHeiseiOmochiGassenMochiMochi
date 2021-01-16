@@ -10,10 +10,11 @@ public class LocalGameManager : MonoBehaviour
     // CPUの設定
     [SerializeField] GameObject[] localObj = default;
     [SerializeField] LocalPitcherManager localPitcherManager = default;
-
+    [SerializeField] GameObject messageText = default;
     public void Init()
     {
         localPitcherManager.Init();
+        messageText.SetActive(false);
     }
 
     public void SetActiveObj(bool isActive)
@@ -39,6 +40,7 @@ public class LocalGameManager : MonoBehaviour
     // ピッチャーに球を要求する
     void RequestPitch()
     {
+        messageText.SetActive(false);
         localPitcherManager.currentPitherData.pitcherObj.GetComponent<LocalPitcher>().Pitch();
     }
 
