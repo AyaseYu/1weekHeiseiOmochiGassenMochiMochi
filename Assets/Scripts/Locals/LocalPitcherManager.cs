@@ -11,6 +11,7 @@ public class LocalPitcherManager : MonoBehaviour
     {
 
         int level = (int)GameDataManager.instance.level;
+        Debug.Log("レベル" + level);
         ShowPitcherOf(level);
     }
 
@@ -21,6 +22,7 @@ public class LocalPitcherManager : MonoBehaviour
             level.pitcherObj.GetComponent<LocalPitcher>().SetLevel(level);
             level.pitcherObj.SetActive(false);
         }
+
         levelList[index].pitcherObj.SetActive(true);
         levelList[index].pitcherObj.GetComponent<LocalPitcher>().Init();
         currentPitherData = new LevelData(levelList[index]);

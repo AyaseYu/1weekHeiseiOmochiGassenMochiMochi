@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using World;
+using Steamworks;
 
 public class CommonGameManager : MonoBehaviour
 {
@@ -135,7 +136,8 @@ public class CommonGameManager : MonoBehaviour
         {
             return true;
         }
-        return IsNormaClear();
+        //return IsNormaClear();
+        return false;
     }
 
     bool IsNormaClear()
@@ -160,6 +162,47 @@ public class CommonGameManager : MonoBehaviour
         {
             SoundManager.instance.PlaySE(SoundManager.SE.Clear);
             mainUI.ShowResult("成功!");
+            Debug.Log(localGameManager.GetCurrentLevelData().level);
+
+            switch (localGameManager.GetCurrentLevelData().level) 
+            {
+
+                case Level.Stage1:
+                    StageSelectManager.Clear = 2;
+                    
+                    if (SteamManager.Initialized)
+                    {
+                        //初期化が成功したらAppIDを表示(480はサンプルのID)
+                        SteamUserStats.SetAchievement("HOME_2");
+                    }
+                    else
+                    {
+                        Debug.Log("Steamの初期化失敗");
+                    }
+                    break;
+                case Level.Stage2:
+                    StageSelectManager.Clear = 3;
+                    break;
+                case Level.Stage3:
+                    StageSelectManager.Clear = 4;
+                    break;
+                case Level.Stage4:
+                    StageSelectManager.Clear = 5;
+                    break;
+                case Level.Stage5:
+                    StageSelectManager.Clear = 6;
+                    break;
+                case Level.Stage6:
+                    StageSelectManager.Clear = 7;
+                    break;
+                case Level.Stage7:
+                    StageSelectManager.Clear = 8;
+                    break;
+            }
+
+            Debug.Log(StageSelectManager.Clear);
+            ES3.Save<int>("Stagekey", StageSelectManager.Clear);
+
         }
         else
         {

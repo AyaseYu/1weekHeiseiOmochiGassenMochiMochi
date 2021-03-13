@@ -52,6 +52,7 @@ namespace World
             ResetBallPosition();
             // Setup(angle, new Vector2(Mathf.Abs(20 - 10 * meetDistance), 13 - meetDistance * 5));
             // Setup(angle, new Vector2(Mathf.Abs(20 - 10 * meetDistance), 13 - meetDistance * 5));
+            //バットごとの値変更　案：initVeloctyに値をかける
             float initVelocityX = Mathf.Abs(15 - 8 * meetDistance);
             float initVelocityy = Mathf.Abs(13 - 4 * meetDistance);
             Debug.Log(initVelocityX+","+initVelocityX);

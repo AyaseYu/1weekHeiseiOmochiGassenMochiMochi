@@ -15,8 +15,14 @@ public class Bat : MonoBehaviour
     [SerializeField] int kk = 0;
     public void CheckHitOfBall()
     {
+        //localBall.tr クリックした時のボールの場所 
+        //dis バットとボールの距離：ボールとmeetPoint 判定　y座標
         float dis = localBall.transform.position.y - meetPoint.transform.position.y;
         float angle = 0;
+
+
+        //disが2.5f離れているから空振り判定
+        //左が振り遅れ、右が早すぎる
         if (dis < 0.2f + offset || dis > 2.5f + offset)
         {
             Debug.Log("空振り:" + dis);
@@ -50,6 +56,8 @@ public class Bat : MonoBehaviour
         }
 
         // float meedDistance = Vector2.Distance(meetPoint.transform.position, localBall.transform.position);
+        //meedDsitance:ボールとの距離 横
+        //"Mathf.Abs(dis-0.5f) * 0.4f;" y評価 
         float meedDistance = Mathf.Abs(meetPoint.transform.position.x - localBall.transform.position.x) + Mathf.Abs(dis-0.5f) * 0.4f;
         string tmp = string.Format("距離{0}:バットの位置y{1}, ボールの位置{2}", localBall.transform.position.y - meetPoint.transform.position.y, meetPoint.transform.position.y, localBall.transform.position.y);
         string tmp2 = string.Format("ミートの位置{0}, ボールとの距離{1}", (Vector2)meetPoint.transform.position, meedDistance);

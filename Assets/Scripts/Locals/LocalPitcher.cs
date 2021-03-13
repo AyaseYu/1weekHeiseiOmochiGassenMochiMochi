@@ -72,6 +72,7 @@ public class LocalPitcher : MonoBehaviour
 
     IEnumerator MoveBall()
     {
+        //10f キャッチャーにボール　（画面）
         while (ball.position.y > -10f && gameObject.activeSelf)
         {
             yield return null;

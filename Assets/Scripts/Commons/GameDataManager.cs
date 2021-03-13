@@ -8,6 +8,14 @@ public enum Level
     Normal,
     Hard,
     Debug,
+    Stage1,
+    Stage2,
+    Stage3,
+    Stage4,
+    Stage5,
+    Stage6,
+    Stage7,
+    Stage8,
 }
 
 public class GameDataManager : MonoBehaviour
@@ -17,7 +25,7 @@ public class GameDataManager : MonoBehaviour
 
 
 
-    public Level level = Level.Easy;
+    public Level level = Level.Stage1;
 
     public static GameDataManager instance;
 
@@ -38,6 +46,9 @@ public class GameDataManager : MonoBehaviour
     {
         this.level = level;
     }
+
+    //セーブ
+    public static int Clearflag;
 
 
 }

@@ -20,6 +20,7 @@ public class BallBreaking : MonoBehaviour
 
     public void Init(Level level)
     {
+        Debug.Log("レベル" + level);
         switch (level)
         {
             case Level.Easy:
@@ -47,6 +48,45 @@ public class BallBreaking : MonoBehaviour
                 ballList.Add(4);
                 break;
             case Level.Debug:
+                ballList.Add(0);
+                ballList.Add(1);
+                ballList.Add(2);
+                ballList.Add(3);
+                break;
+            case Level.Stage1:
+                ballList.Add(0);
+                break;
+            case Level.Stage2:
+                ballList.Add(1);
+                break;
+            case Level.Stage3:
+                ballList.Add(2);
+                break;
+            case Level.Stage4:
+                ballList.Add(0);
+                ballList.Add(1);
+                ballList.Add(2);
+                ballList.Add(3);
+                break;
+            case Level.Stage5:
+                ballList.Add(0);
+                ballList.Add(1);
+                ballList.Add(2);
+                ballList.Add(3);
+                break;
+            case Level.Stage6:
+                ballList.Add(0);
+                ballList.Add(1);
+                ballList.Add(2);
+                ballList.Add(3);
+                break;
+            case Level.Stage7:
+                ballList.Add(0);
+                ballList.Add(1);
+                ballList.Add(2);
+                ballList.Add(3);
+                break;
+            case Level.Stage8:
                 ballList.Add(0);
                 ballList.Add(1);
                 ballList.Add(2);
@@ -122,6 +162,26 @@ public class BallBreaking : MonoBehaviour
 
                 }
 
+                break;
+            case 6:
+                //遅くなる
+                sequence.Append(this.transform.DOMove(new Vector3(x, 1f, 0), 0.4f).SetEase(Ease.InQuad));
+            
+                break;
+
+            case 7:
+                //バウンド右
+                sequence.Append(this.transform.DOMove(new Vector3(6f, 3f, 0), 0.4f).SetEase(Ease.Linear));
+                sequence.Append(this.transform.DOMove(new Vector3(x, -6f, 0), 0.4f).SetEase(Ease.Linear));
+                break;
+            case 8:
+                //バウンド左
+                sequence.Append(this.transform.DOMove(new Vector3(-6f, 3f, 0), 0.4f).SetEase(Ease.Linear));
+                sequence.Append(this.transform.DOMove(new Vector3(x, -6f, 0), 0.4f).SetEase(Ease.Linear));
+                break;
+
+            case 9:
+                sequence.Append(this.transform.DOMove(new Vector3(6f, 3f, 0), 0.4f).SetEase(Ease.Linear));
                 break;
 
         }
