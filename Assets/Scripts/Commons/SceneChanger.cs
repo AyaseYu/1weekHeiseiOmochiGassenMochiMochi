@@ -11,4 +11,10 @@ public class SceneChanger : MonoBehaviour
         SoundManager.instance.PlaySE(SoundManager.SE.Button);
         SceneManager.LoadScene(nextSceneName);
     }
+
+    public void OnBack()
+    {
+        SceneManager.LoadScene("Title");
+    }
+
 }
